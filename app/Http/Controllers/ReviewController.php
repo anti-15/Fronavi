@@ -43,6 +43,7 @@ class ReviewController extends Controller
     $validator = Validator::make($request->all(), [
         'title' => 'required | max:50',
         'description' => 'required',
+        'score' => 'required',
     ]);
     // バリデーション:エラー
     if ($validator->fails()) {
@@ -51,8 +52,7 @@ class ReviewController extends Controller
         ->withInput()
         ->withErrors($validator);
     }
-    // create()は最初から用意されている関数
-    // 戻り値は挿入されたレコードの情報
+
     $result = Review::create($request->all());
     // ルーティング「todo.index」にリクエスト送信（一覧ページに移動）
     return redirect()->route('review.index');

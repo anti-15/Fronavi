@@ -36,10 +36,10 @@
               </div>
 
               <div class="flex flex-col mb-4">
-                <label class="mb-2 uppercase font-mono text-lg text-grey-darkest" for="description">おすすめ度</label>
-                <select class="border py-2 px-3 text-grey-darkest" type="text" name="description" id="description">
-                  <option class=" " value="">選択して下さい</option>
-                  <option class="text-yellow-400" value="1">★</option>
+                <label class="mb-2 uppercase font-mono text-lg text-grey-darkest" for="">おすすめ度</label>
+                <select class="border py-2 px-3 text-grey-darkest" type="text" name="score" id="">
+                  <option class="" value="">選択して下さい</option>
+                  <option value="1">★</option>
                   <option value="2">★★</option>
                   <option value="3">★★★</option>
                   <option value="4">★★★★</option>
