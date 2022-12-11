@@ -18,6 +18,17 @@ class Review extends Model
     // 🔽 追加
     public static function getAllOrderByUpdated_at()
     {
-        return self::orderBy('updated_at', 'desc')->get();
+        return 
+        self::orderBy('updated_at', 'desc')->get();
+        
+    }
+
+    public static function getAllOrderByScore()
+    {
+        return 
+        self::orderBy('score', 'desc')
+            ->orderBy('created_at', 'desc')
+            ->get();
+        
     }
 }

@@ -19,6 +19,14 @@ class ReviewController extends Controller
         return view('review.index',compact('reviews'));
     }
 
+    public function indexScore()
+    {
+        $reviews = Review::getAllOrderByScore();
+        return view('review.index',compact('reviews'));
+    }
+
+
+
     /**
      * Show the form for creating a new resource.
      *

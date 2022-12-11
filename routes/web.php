@@ -13,7 +13,12 @@ use App\Http\Controllers\ReviewController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource('review', ReviewController::class);
+Route::group(['middleware' => 'auth'], function () {
+  Route::get('/review/score', [ReviewController::class, 'indexScore'])->name('review.score');
+  Route::resource('review', ReviewController::class);
+
+});
+
 
 Route::get('/', function () {
     return view('welcome');
