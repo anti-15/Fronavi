@@ -60,6 +60,9 @@ class ReviewController extends Controller
         ->withInput()
         ->withErrors($validator);
     }
+    
+    //画像の保存
+    $img = $request->image->store('public');
 
     $result = Review::create($request->all());
     // ルーティング「todo.index」にリクエスト送信（一覧ページに移動）

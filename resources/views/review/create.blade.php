@@ -7,18 +7,17 @@
     </h2>
   </x-slot>
 
-  <form class="mb-6" action="{{ route('review.store') }}" method="POST">
-    <div class="py-12 flex">
-        <!-- <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12 flex justify-center items-end">
+  <form class="mb-6" action="{{ route('review.store') }}" method="POST" enctype="multipart/form-data">
+
+      <div class="py-12 flex">
+        <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12 flex justify-center items-end">
           <div>
-            <form method="POST" action="/upload" enctype="multipart/form-data">
+            <!-- <form method="POST" action="/upload" enctype="multipart/form-data"> -->
               @csrf
               <input type="file" name="image" value ="">
-            </form>
+            <!-- </form> -->
           </div>
-
-        </div> -->
-
+      </div>
 
       <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
