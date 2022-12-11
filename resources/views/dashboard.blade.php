@@ -14,4 +14,6 @@
             </div>
         </div>
     </div>
+
+    <img src=" {{ asset('storage/CKdkGPdYExcOxg2p05pYqbzkNf3unYdXtrHGlITs.png')}}">
 </x-app-layout>
