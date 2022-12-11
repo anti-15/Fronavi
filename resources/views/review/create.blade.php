@@ -14,7 +14,7 @@
           <div>
             <!-- <form method="POST" action="/upload" enctype="multipart/form-data"> -->
               @csrf
-              <input type="file" name="image" value ="">
+              <input type="file" name="imgpath" value ="">
             <!-- </form> -->
           </div>
       </div>

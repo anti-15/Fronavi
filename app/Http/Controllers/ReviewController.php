@@ -47,7 +47,7 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
         // ddd($request->all());
-          // バリデーション
+    // バリデーション
     $validator = Validator::make($request->all(), [
         'title' => 'required | max:50',
         'description' => 'required',
@@ -60,9 +60,9 @@ class ReviewController extends Controller
         ->withInput()
         ->withErrors($validator);
     }
-    
+
     //画像の保存
-    $img = $request->image->store('public');
+    $img = $request->imgpath->store('public');
 
     $result = Review::create($request->all());
     // ルーティング「todo.index」にリクエスト送信（一覧ページに移動）
