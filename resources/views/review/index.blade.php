@@ -36,41 +36,50 @@
               </tr>
             </thead>
             <tbody>
-
-
               @foreach ($reviews as $review)
-              <tr class="hover:bg-grey-lighter">
-                <td class="flex justify-between py-4 px-6 border-b border-grey-light">
-                  <img class = ""src=" {{ asset('storage/'.$review->imgpath)}}">
-                  <h3 class="text-left font-bold text-lg text-grey-dark">{{$review->title}}</h3>
-                  <div class="flex">
-                    <!-- 更新ボタン -->
-                    <!-- 削除ボタン -->
-                  </div>
-                  <h3 class="text-left text-yellow-400 text-lg text-grey-dark">
-                    @if($review->score == 1)
-                    {{$review->score = '★'}}
-                    @endif
+              
+                <tr class="hover:bg-grey-lighter">
+                  <td>
+                    <div class="md:w-1/2 transition duration-300  hover:scale-90 hover:rounded-lg flex justify-center">
+                      <a href="https://tailwindcss.com/docs/opacity">
+                        <img class = "transition hover:rounded-lg hover:opacity-80"src=" {{ asset('storage/'.$review->imgpath)}}">
+                      </a>
+                    </div>
+                  </td>
+                </tr>
 
-                    @if($review->score == 2)
-                    {{$review->score = '★★'}}
-                    @endif
+                <tr class="hover:bg-grey-lighter">
+                  
+                  <td class="flex justify-between py-4 px-6 border-b border-grey-light">
+                    <h3 class="text-left font-bold text-lg text-grey-dark">{{$review->title}}</h3>
+                    <div class="flex">
+                      <!-- 更新ボタン -->
+                      <!-- 削除ボタン -->
+                    </div>
+                    <h3 class="text-left text-yellow-400 text-lg text-grey-dark">
+                      @if($review->score == 1)
+                      {{$review->score = '★'}}
+                      @endif
 
-                    @if($review->score == 3)
-                    {{$review->score = '★★★'}}
-                    @endif
+                      @if($review->score == 2)
+                      {{$review->score = '★★'}}
+                      @endif
 
-                    @if($review->score == 4)
-                    {{$review->score = '★★★★'}}
-                    @endif
+                      @if($review->score == 3)
+                      {{$review->score = '★★★'}}
+                      @endif
 
-                    @if($review->score == 5)
-                    {{$review->score = '★★★★★'}}
-                    @endif
-                  </h3>
-                </td>
-              </tr>
-              @endforeach
+                      @if($review->score == 4)
+                      {{$review->score = '★★★★'}}
+                      @endif
+
+                      @if($review->score == 5)
+                      {{$review->score = '★★★★★'}}
+                      @endif
+                    </h3>
+                  </td>
+                </tr>
+                @endforeach
             </tbody>
           </table>
         </div>
