@@ -63,10 +63,28 @@ class ReviewController extends Controller
 
     //画像の保存
     $filename = $request->imgpath->getClientOriginalName();
+    // ddd($filename);
     //storeAs関数でstore/app/publicに画像を保存し、そのパスを$imgに入れる。
     $img = $request->imgpath->storeAs('',$filename,'public');
+    
+    // これいらんわ多分
+    $data = $request->merge(['imgpath' => $img]);
+    
+    //imagepathの追加
+    $result = Review::create([
+      'imgpath' => $img,
+      'title' => $request->title,
+      'description' => $request->description,
+      'score' => $request->score
+    ]);
 
-    $result = Review::create($request->all());
+    // Review::insert([
+    //   'title' => $request->title,
+    //   'description' => $request->description,
+    //   'imgpath' => $img
+    // ]);
+
+    
 
     // ルーティング「todo.index」にリクエスト送信（一覧ページに移動）
     return redirect()->route('review.index');

@@ -10,7 +10,7 @@
   <div class="py-12">
     <div class="max-w-7xl mx-auto sm:w-10/12 md:w-8/10 lg:w-8/12">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-6 bg-white border-b border-gray-200">
+        <div class="p-4 bg-white border-b border-gray-200">
           <table class="text-center w-full border-collapse">
             <thead>
 
@@ -41,6 +41,7 @@
               @foreach ($reviews as $review)
               <tr class="hover:bg-grey-lighter">
                 <td class="flex justify-between py-4 px-6 border-b border-grey-light">
+                  <img class = ""src=" {{ asset('storage/'.$review->imgpath)}}">
                   <h3 class="text-left font-bold text-lg text-grey-dark">{{$review->title}}</h3>
                   <div class="flex">
                     <!-- 更新ボタン -->
