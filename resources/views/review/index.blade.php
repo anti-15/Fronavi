@@ -41,7 +41,7 @@
                 <tr class="hover:bg-grey-lighter">
                   <td>
                     <div class="md:w-1/2 transition duration-300  hover:scale-90 hover:rounded-lg flex justify-center">
-                      <a href="https://tailwindcss.com/docs/opacity">
+                      <a href="{{ route('review.show', $review->id)}}">
                         <img class = "transition duration-300 hover:rounded-lg hover:opacity-80"src=" {{ asset('storage/'.$review->imgpath)}}">
                       </a>
                     </div>
@@ -51,7 +51,9 @@
                 <tr class="hover:bg-grey-lighter">
                   
                   <td class="flex justify-between py-4 px-6 border-b border-grey-light">
+                    <a href="{{ route('review.show', $review->id)}}">
                     <h3 class="text-left font-bold text-lg text-grey-dark">{{$review->title}}</h3>
+                    </a>
                     <div class="flex">
                       <!-- 更新ボタン -->
                       <!-- 削除ボタン -->
