@@ -42,7 +42,7 @@
                   <td>
                     <div class="md:w-1/2 transition duration-300  hover:scale-90 hover:rounded-lg flex justify-center">
                       <a href="https://tailwindcss.com/docs/opacity">
-                        <img class = "transition hover:rounded-lg hover:opacity-80"src=" {{ asset('storage/'.$review->imgpath)}}">
+                        <img class = "transition duration-300 hover:rounded-lg hover:opacity-80"src=" {{ asset('storage/'.$review->imgpath)}}">
                       </a>
                     </div>
                   </td>

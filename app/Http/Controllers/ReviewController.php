@@ -61,15 +61,24 @@ class ReviewController extends Controller
         ->withErrors($validator);
     }
 
-    //画像の保存
-    $filename = $request->imgpath->getClientOriginalName();
-    // ddd($filename);
-    //storeAs関数でstore/app/publicに画像を保存し、そのパスを$imgに入れる。
-    $img = $request->imgpath->storeAs('',$filename,'public');
     
-    // これいらんわ多分
-    $data = $request->merge(['imgpath' => $img]);
-    
+    // //画像の保存
+    // $filename = $request->imgpath->getClientOriginalName();
+    // //送信したファイル名が存在しないならばTrueを返す、存在するならfalseを返す
+    // $doesnt_exists = Review::where('imgpath', $filename)->doesntExist();
+    // $counts = Review::where('imgpath', $filename)->count();
+    // ddd($counts);
+    // // ddd($doesnt_exists);
+    // //その名前のファイルがDBになかったら(Trueならば)、storeAs関数でstore/app/publicに画像を保存し、そのパスを$imgに入れる。
+    // if($doesnt_exists){
+      //   $img = $request->imgpath->storeAs('',$filename,'public');
+      // }
+      // else {
+        
+        // }
+        
+    $img = $request->imgpath->store('public');
+    $img = substr($img, 7);
     //imagepathの追加
     $result = Review::create([
       'imgpath' => $img,
