@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Validator;
 use App\Models\Review;
+use \InterventionImage;
 class ReviewController extends Controller
 {
     /**
@@ -76,25 +77,22 @@ class ReviewController extends Controller
       // else {
         
         // }
+
+    $file = $request->file('imgpath');
+    $name = $file->getClientOriginalName();
+    //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
+    InterventionImage::make($file)->resize(1080, null, function ($constraint) 
+    {$constraint->aspectRatio();})->save(storage_path('app/public/' .$name ) );;
         
-    $img = $request->imgpath->store('public');
-    $img = substr($img, 7);
+    // $img = $request->imgpath->store('public');
+    // $img = substr($img, 7);
     //imagepathの追加
     $result = Review::create([
-      'imgpath' => $img,
+      'imgpath' => $name,
       'title' => $request->title,
       'description' => $request->description,
       'score' => $request->score
     ]);
-
-    // Review::insert([
-    //   'title' => $request->title,
-    //   'description' => $request->description,
-    //   'imgpath' => $img
-    // ]);
-
-    
-
     // ルーティング「todo.index」にリクエスト送信（一覧ページに移動）
     return redirect()->route('review.index');
     }
