@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use Validator;
 use App\Models\Review;
+use App\Models\Tag;
+use Auth;
 use \InterventionImage;
 class ReviewController extends Controller
 {
@@ -53,6 +55,7 @@ class ReviewController extends Controller
         'title' => 'required | max:50',
         'description' => 'required',
         'score' => 'required',
+        'tag' => 'required'
     ]);
     // バリデーション:エラー
     if ($validator->fails()) {
@@ -82,17 +85,31 @@ class ReviewController extends Controller
     $name = $file->getClientOriginalName();
     //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
     InterventionImage::make($file)->resize(1080, null, function ($constraint) 
-    {$constraint->aspectRatio();})->save(storage_path('app/public/' .$name ) );;
-        
+    {$constraint->aspectRatio();})->save(storage_path('app/public/' .$name ) );
+
     // $img = $request->imgpath->store('public');
     // $img = substr($img, 7);
-    //imagepathの追加
+
+    //諸々書き込み
     $result = Review::create([
-      'imgpath' => $name,
-      'title' => $request->title,
-      'description' => $request->description,
-      'score' => $request->score
+        'user_id' => Auth::user()->id,
+        'imgpath' => $name,
+        'title' => $request->title,
+        'description' => $request->description,
+        'score' => $request->score
     ]);
+
+    //同じものが存在すれば更新される
+    $tag = Tag::updateOrCreate(
+        [
+            'name' => $request->tag
+        ]
+    );
+    //tagのIDを保存する
+    $tag_ids[] = $tag->id;
+    // ddd($tag_ids);
+    $result->tags()->sync($tag_ids);
+        
     // ルーティング「todo.index」にリクエスト送信（一覧ページに移動）
     return redirect()->route('review.index');
     }

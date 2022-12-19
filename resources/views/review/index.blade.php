@@ -31,7 +31,7 @@
             </div>
 
               <tr class="flex justify-between border-b border-grey-light">
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-xl text-grey-dark ">タイトル</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-xl text-grey-dark ">施設名</th>
                 <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-xl text-grey-dark ">おすすめ度</th>
               </tr>
             </thead>
@@ -53,6 +53,17 @@
                   <td class="flex justify-between py-4 px-6 border-b border-grey-light">
                     <a href="{{ route('review.show', $review->id)}}">
                     <h3 class="text-left font-bold text-lg text-grey-dark">{{$review->title}}</h3>
+
+                    <div class="flex space-x-2">
+
+                      @foreach($review->tags as $tag)
+                      <h3 class=" py-1 px-2  text-xs font-medium tracking-widest text-white  bg-red-300 shadow-lg rounded-full focus:outline-none duration-200 transition-all hover:bg-red-500 hover:shadow-none">{{$tag->name}}</h3>
+                      @endforeach
+
+                      @foreach($review->tags as $tag)
+                      <h3 class=" py-1 px-2  text-xs font-medium tracking-widest text-white  bg-red-300 shadow-lg rounded-full focus:outline-none duration-200 transition-all hover:bg-red-500 hover:shadow-none">{{$tag->name}}</h3>
+                      @endforeach
+                    </div>
                     </a>
                     <div class="flex">
                       <!-- 更新ボタン -->

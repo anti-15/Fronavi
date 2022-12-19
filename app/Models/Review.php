@@ -31,4 +31,9 @@ class Review extends Model
             ->get();
         
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class)->withTimestamps();
+    }
 }

@@ -12,23 +12,22 @@
           <div class="mb-6">
 
             <div class="flex flex-col mb-4">
-              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">review</p>
-              <img class = "transition duration-300 hover:rounded-lg hover:opacity-80"src=" {{ asset('storage/'.$review->imgpath)}}">
+              <img class = "transition duration-300 drop-shadow-md"src=" {{ asset('storage/'.$review->imgpath)}}">
             </div>
 
             <div class="flex flex-col mb-4">
-              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">review</p>
+              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">施設名</p>
               <p class="py-2 px-3 text-grey-darkest" id="tweet">
                 {{$review->title}}
               </p>
             </div>
             <div class="flex flex-col mb-4">
-              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">Description</p>
+              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">説明、レビュー</p>
               <p class="py-2 px-3 text-grey-darkest" id="description">
                 {{$review->description}}
               </p>
             </div>
-            <a href="{{ url()->previous() }}" class="block text-center w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
+            <a href="{{ route('review.index') }}" class="block text-center w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
               Back
             </a>
           </div>
