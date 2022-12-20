@@ -113,9 +113,10 @@
       </div>
       
       <div class="sm:col-span-2 flex justify-between items-center">
-        <div>
+        <div class="flex items-center">
           @csrf
           <input type="file" name="imgpath" value ="">
+          <p class="max-w-screen-md text-gray-500  text-center ">横画像推奨</p>
         </div>
       </div>
 

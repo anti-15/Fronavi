@@ -13,8 +13,14 @@ class Tag extends Model
         'name',
     ];
 
+    //多対多
     public function reviews()
     {
         return $this->belongsToMany(Review::class)->withTimestamps();
+    }
+
+    //1対多
+    public function TagReviews(){
+        return $this->hasMany(Review::class);
     }
 }

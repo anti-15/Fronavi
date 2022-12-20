@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\TagController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +17,7 @@ use App\Http\Controllers\ReviewController;
 Route::group(['middleware' => 'auth'], function () {
   Route::get('/review/score', [ReviewController::class, 'indexScore'])->name('review.score');
   Route::resource('review', ReviewController::class);
+  Route::resource('tag', TagController::class);
 
 });
 

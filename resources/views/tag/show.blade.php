@@ -31,7 +31,7 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($reviews as $review)
+              @foreach ($TagReviews as $review)
               
                 <tr class="hover:bg-grey-lighter">
                   <td>

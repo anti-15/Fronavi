@@ -21,6 +21,16 @@
                 {{$review->title}}
               </p>
             </div>
+          
+            @foreach($review->tags as $tag)
+            <div class="flex flex-col mb-4">
+              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">エリア</p>
+              <p class="py-2 px-3 text-grey-darkest" id="tweet">
+                {{$tag->name}}
+              </p>
+            </div>
+            @endforeach
+
             <div class="flex flex-col mb-4">
               <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">説明、レビュー</p>
               <p class="py-2 px-3 text-grey-darkest" id="description">

@@ -17,7 +17,8 @@ class ReviewController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        // ddd($review);
         $reviews = Review::getAllOrderByUpdated_at();
         return view('review.index',compact('reviews'));
     }
