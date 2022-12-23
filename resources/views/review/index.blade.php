@@ -6,6 +6,7 @@
     <div class="max-w-7xl mx-auto sm:w-10/12 md:w-8/10 lg:w-8/12">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-4 bg-white border-b border-gray-200">
+          <h1 class="text-center text-3xl">ふろなび！！</h1>
           <table class="text-center w-full border-collapse">
             <thead>
 
@@ -46,20 +47,23 @@
                 <tr class="hover:bg-grey-lighter">
                   
                   <td class="flex justify-between py-4 px-6 border-b border-grey-light">
-                    <a href="{{ route('review.show', $review->id)}}">
-                    <h3 class="text-left font-bold text-lg text-grey-dark">{{$review->title}}</h3>
-
-                    <div class="flex space-x-2">
-
+                    <div class="flex space-x-5 items-center">  
+                      <a href="{{ route('review.show', $review->id)}}">
+                        <h3 class="text-left font-bold text-lg text-grey-dark">{{$review->title}}</h3>
+                      </a>
+                      
                       @foreach($review->tags as $tag)
-                      <h3 class=" py-1 px-2  text-xs font-medium tracking-widest text-white  bg-red-300 shadow-lg rounded-full focus:outline-none duration-200 transition-all hover:bg-red-500 hover:shadow-none">{{$tag->name}}</h3>
+                      <a href="{{ route('tag.show', $tag->id)}}">
+                        <div class="flex space-x-2">
+                          <h3 class=" py-1 px-2  text-xs font-medium tracking-widest text-white  bg-red-300 shadow-lg rounded-full focus:outline-none duration-200 transition-all hover:bg-red-500 hover:shadow-none">{{$tag->name}}</h3>
+                        </div>
+                      </a>
                       @endforeach
                     </div>
-                    </a>
-                    <div class="flex">
+                    <!-- <div class="flex"> -->
                       <!-- 更新ボタン -->
                       <!-- 削除ボタン -->
-                    </div>
+                    <!-- </div> -->
                     <h3 class="text-left text-yellow-400 text-lg text-grey-dark">
                       @if($review->score == 1)
                       {{$review->score = '★'}}
@@ -81,18 +85,7 @@
                       {{$review->score = '★★★★★'}}
                       @endif
                     </h3>
-
-                    @foreach($review->tags as $tag)
-                    <a href="{{ route('tag.show', $tag->id)}}">
-                      <div class="flex space-x-2">
-                        <h3 class=" py-1 px-2  text-xs font-medium tracking-widest text-white  bg-red-300 shadow-lg rounded-full focus:outline-none duration-200 transition-all hover:bg-red-500 hover:shadow-none">{{$tag->name}}</h3>
-                      </div>
-                    </a>
-                    @endforeach
-                    
                   </td>
-
-                  
                 </tr>
                 @endforeach
             </tbody>
