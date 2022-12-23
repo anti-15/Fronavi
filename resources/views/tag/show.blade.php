@@ -1,18 +1,22 @@
-<!-- resources/views/tweet/index.blade.php -->
-
 <x-app-layout>
 
   <div class="py-12">
     <div class="max-w-7xl mx-auto sm:w-10/12 md:w-8/10 lg:w-8/12">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-4 bg-white border-b border-gray-200">
-          @foreach($TagReviews->tags as $tag)
-            <div class="flex flex-col mb-4">
-              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">エリア</p>
-              <p class="py-2 px-3 text-grey-darkest" id="tweet">
-                {{$tag->name}}
-              </p>
+          @foreach($TagReviews as $tag)
+          @foreach($tag -> tags as $ts)
+            <div class="flex  justify-center mb-4">
+              <!-- <p class="py-2 px-6 text-white text-center bg-red-300 rounded-full text-3xl  font-ShipporiMincho" >
+                # {{$ts->name}}
+              </p> -->
+
+              <a class=" py-2 px-6 text-xl font-medium tracking-widest text-white  bg-red-300 shadow-lg rounded-full focus:outline-none duration-200 transition-all">
+                  #{{$ts->name}}
+              </a>
             </div>
+            @endforeach
+            @break
             @endforeach
           <table class="text-center w-full border-collapse">
             <thead>
