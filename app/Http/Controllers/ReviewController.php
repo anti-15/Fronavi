@@ -83,10 +83,15 @@ class ReviewController extends Controller
         // }
 
     $file = $request->file('imgpath');
+    
+    // $height = getimagesize($file);
+    // ddd($height);
     $name = $file->getClientOriginalName();
+
     //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
-    InterventionImage::make($file)->resize(1080, null, function ($constraint) 
-    {$constraint->aspectRatio();})->save(storage_path('app/public/' .$name ) );
+    $img = InterventionImage::make($file)->fit(1080, 720, function ($constraint) {
+        $constraint->aspectRatio();
+    })->save(storage_path('app/public/' .$name ) );
 
     // $img = $request->imgpath->store('public');
     // $img = substr($img, 7);
@@ -158,6 +163,7 @@ class ReviewController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $result = Review::find($id)->delete();
+        return redirect()->route('review.index');
     }
 }

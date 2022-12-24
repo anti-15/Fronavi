@@ -16,13 +16,13 @@
             {{ __('Dashboard') }}
           </x-nav-link>
         </div>
-        <!-- 🔽 一覧ページへのリンクを追加 -->
+        <!-- 一覧ページ -->
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
           <x-nav-link :href="route('review.index')" :active="request()->routeIs('review.index')">
             {{ __('Index') }}
           </x-nav-link>
         </div>
-        <!-- 🔽 作成ページへのリンクを追加 -->
+        <!-- 作成ページ -->
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
           <x-nav-link :href="route('review.create')" :active="request()->routeIs('review.create')">
             {{ __('Create') }}
@@ -114,6 +114,9 @@
         <!-- Authentication -->
         <form method="POST" action="{{ route('logout') }}">
           @csrf
+          <x-responsive-nav-link :href="route('profile.edit')">
+                {{ __('profile') }}
+          </x-responsive-nav-link>
 
           <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
                                         this.closest('form').submit();">

@@ -31,9 +31,15 @@ class Review extends Model
             ->get();
         
     }
-
+    //多対多
     public function tags()
     {
         return $this->belongsToMany(Tag::class)->withTimestamps();
     }
+
+    //多対1(レビューにユーザーネームを表示)
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    } 
 }
