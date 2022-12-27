@@ -107,9 +107,10 @@
         </select>
       </div>
 
-      <div>
-        <label for="tag" class=" inline-block text-gray-800 text-sm sm:text-base mb-2">フリータグ</label>
-        <input type = "text" name="tag" class="w-full  text-gray-800 border-1 focus:outline-none ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" placeholder="例:サウナ、露天風呂">
+      <div class="flex flex-col">
+        <label for="" class=" inline-block text-gray-800 text-sm sm:text-base mb-2">フリータグ</label>
+        <input type = "text" name="freetag" class="w-full  text-gray-800 border-1 focus:outline-none ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" placeholder="例:サウナ、露天風呂">
+        <span class="text-sm text-[13px] text-red-600">、で区切るようにしてください</span>
       </div>
 
       <div class="sm:col-span-3">

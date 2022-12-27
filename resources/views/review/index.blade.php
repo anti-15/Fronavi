@@ -122,10 +122,10 @@
                 </tr>
 
                 <tr>
-                  <td>
+                  <td class="flex space-x-2 border-b">
                     @foreach($review->tags as $tag)
                       <a href="{{ route('tag.show', $tag->id)}}">
-                        <div class="flex space-x-2 border-b pb-3">
+                        <div class="flex space-x-2  pb-2">
                           <h3 class=" py-1 px-2  text-xs font-medium tracking-widest text-white  bg-red-300 shadow-lg rounded-full focus:outline-none duration-200 transition-all hover:bg-red-500 hover:shadow-none">{{$tag->name}}</h3>
                         </div>
                       </a>
