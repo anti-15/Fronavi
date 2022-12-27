@@ -22,7 +22,7 @@
     </head>
     <body class="bg-gray-100">
 
-        <div class="flex justify-center ">
+        <!-- <div class="flex justify-center ">
             
 
             <div class="flex flex-col bg-red-500">
@@ -34,10 +34,10 @@
                 <h1 class="font-bold">フロナビ！</h1>
                 <p class="">お気に入りの温泉をシェアしませんか？</p>
             </div>
-        </div>
+        </div> -->
 
 
-        <div class=" flex justify-center min-h-screen bg-gray-100  sm:items-center py-4 sm:pt-0">
+        <div class=" flex justify-center min-h-screen bg-gray-100  items-center py-4 sm:pt-0">
             @if (Route::has('login'))
                 <div class="fixed px-6 py-4 sm:block">
                     @auth

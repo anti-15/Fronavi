@@ -31,7 +31,7 @@ class Review extends Model
             ->get();
         
     }
-    //多対多
+    //タグ機能のための多対多リレーション
     public function tags()
     {
         return $this->belongsToMany(Tag::class)->withTimestamps();
@@ -42,4 +42,10 @@ class Review extends Model
     {
         return $this->belongsTo(User::class);
     } 
+
+    //いいね機能のための多対多リレーション
+    public function users()
+    {
+        return $this->belongsToMany(User::class)->withTimestamps();
+    }
 }

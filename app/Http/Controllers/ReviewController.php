@@ -53,7 +53,7 @@ class ReviewController extends Controller
         // ddd($request->all());
     // バリデーション
     $validator = Validator::make($request->all(), [
-        'title' => 'required | max:50',
+        'title' => 'required | max:25',
         'description' => 'required',
         'score' => 'required',
         'tag' => 'required'
