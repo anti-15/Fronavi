@@ -8,14 +8,12 @@
         <div class="p-4 bg-white border-b border-gray-200">
           @foreach($TagReviews as $tag)
           @foreach($tag -> tags as $ts)
-            <div class="flex  justify-center mb-4">
-              <!-- <p class="py-2 px-6 text-white text-center bg-red-300 rounded-full text-3xl  font-ShipporiMincho" >
-                # {{$ts->name}}
-              </p> -->
-
+            <div class="flex  justify-center">
+              @if($ts -> id == $id)
               <a class=" py-2 px-6 text-xl font-medium tracking-widest text-white  bg-red-300 shadow-lg rounded-full focus:outline-none duration-200 transition-all">
                   #{{$ts->name}}
               </a>
+              @endif
             </div>
             @endforeach
             @break
@@ -23,7 +21,7 @@
           <table class="text-center w-full border-collapse">
             <thead>
 
-            <div class="text-right sm:flex justify-end sm:space-x-1">
+            <div class="text-right sm:flex justify-end sm:space-x-1 mt-5">
               <form class="" action="{{ route('review.index') }}" method="GET">
                 @csrf
                 <button type="submit" class=" py-1 px-3 text-xs font-medium tracking-widest text-white  bg-red-300 shadow-lg rounded-full focus:outline-none duration-200 transition-all hover:bg-red-500 hover:shadow-none">
@@ -39,9 +37,8 @@
               </form>
             </div>
 
-              <tr class="flex justify-between border-b border-grey-light">
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-xl text-grey-dark ">施設名</th>
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-xl text-grey-dark ">おすすめ度</th>
+              <tr class="flex justify-between border-b border-grey-light mt-4">
+                
               </tr>
             </thead>
             <tbody>
@@ -136,10 +133,10 @@
                 </tr>
 
                 <tr>
-                  <td>
+                  <td class="flex space-x-2 border-b">
                     @foreach($review->tags as $tag)
                       <a href="{{ route('tag.show', $tag->id)}}">
-                        <div class="flex space-x-2 border-b pb-3">
+                        <div class="flex space-x-2  pb-2">
                           <h3 class=" py-1 px-2  text-xs font-medium tracking-widest text-white  bg-red-300 shadow-lg rounded-full focus:outline-none duration-200 transition-all hover:bg-red-500 hover:shadow-none">{{$tag->name}}</h3>
                         </div>
                       </a>

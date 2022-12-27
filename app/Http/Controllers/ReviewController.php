@@ -66,7 +66,6 @@ class ReviewController extends Controller
         ->withErrors($validator);
     }
 
-    
     // //画像の保存
     // $filename = $request->imgpath->getClientOriginalName();
     // //送信したファイル名が存在しないならばTrueを返す、存在するならfalseを返す
@@ -93,9 +92,6 @@ class ReviewController extends Controller
         $constraint->aspectRatio();
     })->save(storage_path('app/public/' .$name ) );
 
-    // $img = $request->imgpath->store('public');
-    // $img = substr($img, 7);
-
     //諸々書き込み
     $result = Review::create([
         'user_id' => Auth::user()->id,
@@ -105,16 +101,25 @@ class ReviewController extends Controller
         'score' => $request->score
     ]);
 
-    //同じものが存在すれば更新される
-    $tag = Tag::updateOrCreate(
-        [
-            'name' => $request->tag
-        ]
-    );
-    //tagのIDを保存する
-    $tag_ids[] = $tag->id;
+    //タグの文字列を結合
+    $input_tag = $request->tag . "、" . $request->freetag;
+
+    $tag_ids = [];
+    //、(全角カンマ)で区切って配列に格納する
+    $tags = explode('、', $input_tag);
+    foreach ($tags as $tag) {
+        //同じものが存在すれば更新される
+        $tag = Tag::updateOrCreate(
+            [
+                'name' => $tag,
+            ]
+        );
+        //tagsテーブルに挿入するIDを格納する
+        $tag_ids[] = $tag->id;
+    }
     //syncメソッドで中間テーブルに書き込み
     $result->tags()->sync($tag_ids);
+    // ddd($input_tag);
         
     // ルーティング「todo.index」にリクエスト送信（一覧ページに移動）
     return redirect()->route('review.index');
