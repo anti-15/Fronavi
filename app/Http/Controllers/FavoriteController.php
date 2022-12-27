@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Review;
+use Auth;
 
 class FavoriteController extends Controller
 {
@@ -32,9 +34,10 @@ class FavoriteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Review $review)
     {
-        //
+    $review->users()->attach(Auth::id());
+    return redirect()->route('review.index');
     }
 
     /**
@@ -77,8 +80,9 @@ class FavoriteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Review $review)
     {
-        //
+        $review->users()->detach(Auth::id());
+        return redirect()->route('review.index');
     }
 }

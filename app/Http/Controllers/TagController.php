@@ -51,7 +51,6 @@ class TagController extends Controller
                     ->reviews
                     ->sortByDesc('created_at')
                     ->all();
-
                     // ddd($TagReviews);
         return view('tag.show',compact('TagReviews'));
     }

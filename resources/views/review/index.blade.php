@@ -3,10 +3,10 @@
 <x-app-layout>
 
   <div class="py-12">
-    <div class="max-w-2xl mx-auto sm:w-10/12 md:w-8/10 ">
+    <div class="max-w-xl mx-auto sm:w-10/12 md:w-8/10 ">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-4 bg-white border-b border-gray-200">
-          <h1 class="text-center text-3xl">ふろなび！！</h1>
+          <h1 class="text-center text-3xl">FROCLUB</h1>
           <table class="text-center w-full border-collapse">
             <thead>
 
@@ -26,9 +26,8 @@
               </form>
             </div>
 
-              <tr class="flex justify-between border-b border-grey-light">
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-xl text-grey-dark ">施設名</th>
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-xl text-grey-dark ">おすすめ度</th>
+              <tr class="flex justify-between border-b border-grey-light mt-4">
+                
               </tr>
             </thead>
             <tbody>
@@ -64,10 +63,34 @@
                   
                   <td class="flex justify-between pt-4 px-1 border-grey-light">
 
-                    <div class="flex space-x-5 items-center">  
+                    <div class="flex space-x-1 items-center">  
                       <a href="{{ route('review.show', $review->id)}}">
                         <h3 class="text-left font-bold text-lg text-grey-dark">{{$review->title}}</h3>
                       </a>
+
+                      @if($review->users()->where('user_id', Auth::id())->exists())
+                    <!-- unfavorite ボタン -->
+                    <form action="{{ route('unfavorites',$review) }}" method="POST" class="text-left">
+                      @csrf
+                      <button type="submit" class="flex mr-2 ml-2 text-sm hover:bg-gray-200 hover:shadow-none text-red py-1 px-2 focus:outline-none focus:shadow-outline">
+                        <svg class="h-6 w-6 text-red-500" fill="red" viewBox="0 0 24 24" stroke="red">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                        {{ $review->users()->count() }}
+                      </button>
+                    </form>
+                    @else
+                    <!-- favorite ボタン -->
+                    <form action="{{ route('favorites',$review) }}" method="POST" class="text-left">
+                      @csrf
+                      <button type="submit" class="flex mr-2 ml-2 text-sm hover:bg-gray-200 hover:shadow-none text-black py-1 px-2 focus:outline-none focus:shadow-outline">
+                        <svg class="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="black">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                        {{ $review->users()->count() }}
+                      </button>
+                    </form>
+                    @endif
                     </div>
 
                     <!-- <div class="flex"> -->

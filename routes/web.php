@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\FavoriteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,9 +16,16 @@ use App\Http\Controllers\TagController;
 |
 */
 Route::group(['middleware' => 'auth'], function () {
-  Route::get('/review/score', [ReviewController::class, 'indexScore'])->name('review.score');
-  Route::resource('review', ReviewController::class);
-  Route::resource('tag', TagController::class);
+    //レビュー機能
+    Route::get('/review/score', [ReviewController::class, 'indexScore'])->name('review.score');
+    Route::resource('review', ReviewController::class);
+
+    //タグ機能
+    Route::resource('tag', TagController::class);
+
+    //いいね機能
+    Route::post('review/{review}/favorites', [FavoriteController::class, 'store'])->name('favorites');
+    Route::post('review/{review}/unfavorites', [FavoriteController::class, 'destroy'])->name('unfavorites');
 
 });
 

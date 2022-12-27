@@ -56,7 +56,7 @@ class ReviewController extends Controller
         'title' => 'required | max:25',
         'description' => 'required',
         'score' => 'required',
-        'tag' => 'required'
+        'tag' => 'nullable'
     ]);
     // バリデーション:エラー
     if ($validator->fails()) {
@@ -88,7 +88,7 @@ class ReviewController extends Controller
     // ddd($height);
     $name = $file->getClientOriginalName();
 
-    //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
+    //アスペクト比を維持して、画像サイズを横幅1080px、縦幅720pxにして保存する。
     $img = InterventionImage::make($file)->fit(1080, 720, function ($constraint) {
         $constraint->aspectRatio();
     })->save(storage_path('app/public/' .$name ) );
@@ -113,7 +113,7 @@ class ReviewController extends Controller
     );
     //tagのIDを保存する
     $tag_ids[] = $tag->id;
-    // ddd($tag_ids);
+    //syncメソッドで中間テーブルに書き込み
     $result->tags()->sync($tag_ids);
         
     // ルーティング「todo.index」にリクエスト送信（一覧ページに移動）
