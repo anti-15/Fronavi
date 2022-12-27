@@ -41,4 +41,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //いいね機能のためのリレーション
+    public function reviews() {
+        return $this->belongsToMany(Review::class)->withTimestamps();
+    }  
 }
