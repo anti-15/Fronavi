@@ -21,16 +21,17 @@
                 {{$review->title}}
               </p>
             </div>
-          
+
             @foreach($review->tags as $tag)
+            @if($tag->name == '北海道' || $tag->name == '東北' || $tag->name == '関東' || $tag->name == '関西' || $tag->name == '中国・四国' || $tag->name == '九州・沖縄')
             <div class="flex flex-col mb-4">
               <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">エリア</p>
               <p class="py-2 px-3 text-grey-darkest" id="tweet">
                 {{$tag->name}}
               </p>
             </div>
+            @endif
             @endforeach
-
             <div class="flex flex-col mb-4 overflow-auto">
               <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">説明、レビュー</p>
               <p class="py-2 px-3 text-grey-darkest" id="description">

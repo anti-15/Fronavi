@@ -140,7 +140,7 @@
                           <h3 class=" py-1 px-2  text-xs font-medium tracking-widest text-white  bg-red-300 shadow-lg rounded-full focus:outline-none duration-200 transition-all hover:bg-red-500 hover:shadow-none">{{$tag->name}}</h3>
                         </div>
                       </a>
-                      @endforeach
+                    @endforeach
                   </td>
                 </tr>
                 @endforeach
