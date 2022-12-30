@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\SearchController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +29,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('review/{review}/favorites', [FavoriteController::class, 'store'])->name('favorites');
     Route::post('review/{review}/unfavorites', [FavoriteController::class, 'destroy'])->name('unfavorites');
 
+    //検索機能
+    Route::get('/tweet/search/input', [SearchController::class, 'create'])->name('search.input');
+    Route::get('/tweet/search/result', [SearchController::class, 'index'])->name('search.result');
 });
 
 
