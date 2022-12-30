@@ -19,15 +19,22 @@
         <!-- 一覧ページ -->
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
           <x-nav-link :href="route('review.index')" :active="request()->routeIs('review.index')">
-            {{ __('Index') }}
+            {{ __('投稿一覧') }}
           </x-nav-link>
         </div>
         <!-- 作成ページ -->
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
           <x-nav-link :href="route('review.create')" :active="request()->routeIs('review.create')">
-            {{ __('Create') }}
+            {{ __('投稿する') }}
           </x-nav-link>
         </div>
+
+        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+          <x-nav-link :href="route('search.input')" :active="request()->routeIs('search.input')">
+            {{ __('検索') }}
+          </x-nav-link>
+        </div>
+
       </div>
 
       <!-- Settings Dropdown -->
@@ -85,13 +92,19 @@
     <!-- 🔽 一覧ページへのリンクを追加 -->
     <div class="pt-2 pb-3 space-y-1">
       <x-responsive-nav-link :href="route('review.index')" :active="request()->routeIs('review.index')">
-        {{ __('Index') }}
+        {{ __('投稿一覧') }}
       </x-responsive-nav-link>
     </div>
     <!-- 🔽 作成ページへのリンクを追加 -->
     <div class="pt-2 pb-3 space-y-1">
       <x-responsive-nav-link :href="route('review.create')" :active="request()->routeIs('review.create')">
-        {{ __('Create') }}
+        {{ __('投稿する') }}
+      </x-responsive-nav-link>
+    </div>
+
+    <div class="pt-2 pb-3 space-y-1">
+      <x-responsive-nav-link :href="route('search.input')" :active="request()->routeIs('search.input')">
+        {{ __('Search') }}
       </x-responsive-nav-link>
     </div>
 
