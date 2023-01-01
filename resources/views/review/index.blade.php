@@ -27,8 +27,18 @@
             </div>
 
               <tr class="flex justify-between border-b border-grey-light mt-4">
-                
+                @include('common.errors')
+                <form class="mb-6" action="{{ route('search.result') }}" method="GET">
+                  @csrf
+                  <div class="flex mt-4 h-9">
+                    <input class="w-5/6 border-gray-300" type="text" name="keyword" placeholder="キーワードを入力">
+                    <button type="submit" class="flex justify-center items-center w-1/6 border border-indigo-400 text-white uppercase shadow-sm focus:outline-none  hover:shadow-2xl">
+                      <svg class="h-5 w-5 text-indigo-400"  width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="10" cy="10" r="7" />  <line x1="21" y1="21" x2="15" y2="15" /></svg>
+                    </button>
+                  </div>
+                </form>
               </tr>
+              
             </thead>
             <tbody>
               @foreach ($reviews as $review)

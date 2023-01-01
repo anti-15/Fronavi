@@ -1,30 +1,28 @@
-<!-- resources/views/search/input.blade.php -->
-
 <x-app-layout>
-  <x-slot name="header">
-    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-      {{ __('Search Tweet') }}
-    </h2>
-  </x-slot>
+<div class="bg-white py-6 sm:py-8 lg:py-12">
+  <div class="max-w-screen-2xl px-4 md:px-8 mx-auto">
+    <!-- テキスト -->
+    <div class="mb-6 md:mb-8">
+      <h2 class="text-gray-800 text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-6">温泉を検索！</h2>
 
-  <div class="py-12">
-    <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12">
-      <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-6 bg-white border-b border-gray-200">
-          @include('common.errors')
-          <form class="mb-6" action="{{ route('search.result') }}" method="GET">
-            @csrf
-            <div class="flex flex-col mb-4">
-              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest">Keyword</label>
-              <input class="border py-2 px-3 text-grey-darkest" type="text" name="keyword" >
-            </div>
-            <button type="submit" class="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
-              Search
-            </button>
-          </form>
-        </div>
-      </div>
+      <p class="max-w-screen-md text-gray-500 md:text-lg text-center mx-auto">施設名、エリア、タグ、説明、ユーザー名で検索できます！</p>
     </div>
-  </div>
-</x-app-layout>
 
+    <form class="max-w-screen-md grid sm:grid-cols-3 gap-4 mx-auto" action="{{ route('search.result') }}" method="GET" >
+      @include('common.errors')
+      @csrf
+
+      <div class="sm:col-span-3">
+        <label for="title" class="font-bold inline-block text-gray-800 text-sm sm:text-base mb-2">施設名</label>
+        <input type = "text" name="keyword" class="w-full bg-gray-50 text-gray-800 border-1 focus:outline-none ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2">
+      </div>
+
+
+
+      <div class="sm:col-span-3 flex justify-center items-center">
+        <button class="inline-block w-1/2 bg-red-400 hover:bg-red-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">投稿！</button> 
+      </div>
+    </form>
+  </div>
+</div>
+</x-app-layout>

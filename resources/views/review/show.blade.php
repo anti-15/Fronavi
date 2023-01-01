@@ -38,9 +38,9 @@
                 {{$review->description}}
               </p>
             </div>
-            <a href="{{ route('review.index') }}" class="block text-center w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-red-400 shadow-lg focus:outline-none  hover:shadow-none">
+            <button href="{{ route('review.index') }}" class="block text-center w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-red-400 shadow-lg focus:outline-none  hover:shadow-none" type = "button" onClick="history.back();">
               戻る
-            </a>
+            </button>
           </div>
         </div>
       </div>
