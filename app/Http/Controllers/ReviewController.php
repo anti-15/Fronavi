@@ -154,7 +154,23 @@ class ReviewController extends Controller
     public function edit($id)
     {
         $review = Review::find($id);
-        return view('review.edit', compact('review'));
+
+        $tagResult = '';
+        //タグを結合して文字列にする
+        $tags = $review->tags;
+        foreach($tags as $tag){
+            if(($tag->name != '北海道') && ($tag->name != '東北') && ($tag->name != '関東') && ($tag->name != '関西') && ($tag->name != '中国・四国') && ($tag->name != '九州・沖縄')){
+
+                $tagResult = $tagResult . '、' . $tag->name;
+            }
+        }
+
+        //頭文字の、を切り取る
+        if(mb_substr($tagResult, 0,1) == '、'){
+            $tagResult = mb_substr($tagResult,1);
+        }
+        
+        return view('review.edit', compact('review','tagResult'));
     }
 
     /**
