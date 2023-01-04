@@ -102,7 +102,15 @@ class ReviewController extends Controller
     ]);
 
     //タグの文字列を結合
-    $input_tag = $request->tag . "、" . $request->freetag;
+    if(!empty($request->freetag)){
+        $input_tag = $request->tag . "、" . $request->freetag;
+    }
+    //freetagの入力がなかった場合は結合しない
+    else {
+        $input_tag = $request->tag;
+    }
+
+    // ddd($input_tag);
 
     $tag_ids = [];
     //、(全角カンマ)で区切って配列に格納する
@@ -145,7 +153,8 @@ class ReviewController extends Controller
      */
     public function edit($id)
     {
-        //
+        $review = Review::find($id);
+        return view('review.edit', compact('review'));
     }
 
     /**
@@ -157,7 +166,51 @@ class ReviewController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+    $review = Review::find($id);
+        //バリデーション
+    $validator = Validator::make($request->all(), [
+        'title' => 'required | max:25',
+        'description' => 'required',
+        'score' => 'required',
+        'tag' => 'nullable'
+    ]);
+    // バリデーション:エラー
+    if ($validator->fails()) {
+    return redirect()
+        ->route('review.edit', $id)
+        ->withInput()
+        ->withErrors($validator);
+    }
+
+    if(!empty($request->freetag)){
+        $input_tag = $request->tag . "、" . $request->freetag;
+    }
+    //freetagの入力がなかった場合は結合しない
+    else {
+        $input_tag = $request->tag;
+    }
+
+    // ddd($input_tag);
+
+    $tag_ids = [];
+    //、(全角カンマ)で区切って配列に格納する
+    $tags = explode('、', $input_tag);
+    foreach ($tags as $tag) {
+        //同じものが存在すれば更新される
+        $tag = Tag::updateOrCreate(
+            [
+                'name' => $tag,
+            ]
+        );
+        //tagsテーブルに挿入するIDを格納する
+        $tag_ids[] = $tag->id;
+    }
+    //syncメソッドで中間テーブルに書き込み
+    $review->tags()->sync($tag_ids);
+
+    //データ更新処理
+    $result = Review::find($id)->update($request->all());
+    return redirect()->route('review.index');
     }
 
     /**
