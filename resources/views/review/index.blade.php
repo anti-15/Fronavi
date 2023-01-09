@@ -1,4 +1,3 @@
-<!-- resources/views/tweet/index.blade.php -->
 
 <x-app-layout>
 
@@ -6,7 +5,7 @@
     <div class="max-w-xl mx-auto sm:w-10/12 md:w-8/10 ">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-4 bg-white border-b border-gray-200">
-          <h1 class="text-center text-3xl">FROCLUB</h1>
+          <h1 class="text-center text-3xl">ふろなび</h1>
           <table class="text-center w-full border-collapse">
             <thead>
 
@@ -74,7 +73,7 @@
                   
                     <div class=" transition duration-300  hover:scale-90 hover:rounded-lg flex justify-center">
                       <a href="{{ route('review.show', $review->id)}}">
-                        <img class = "transition duration-300 hover:rounded-lg hover:opacity-80"src=" {{ asset('storage/'.$review->imgpath)}}">
+                        <img class = "transition duration-300 hover:rounded-lg hover:opacity-80"src="{{$review->imgpath}}">
                       </a>
                     </div>
                   </td>

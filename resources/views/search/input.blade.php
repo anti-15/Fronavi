@@ -20,7 +20,7 @@
 
 
       <div class="sm:col-span-3 flex justify-center items-center">
-        <button class="inline-block w-1/2 bg-red-400 hover:bg-red-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">投稿！</button> 
+        <button class="inline-block w-1/2 bg-red-400 hover:bg-red-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">検索！</button> 
       </div>
     </form>
   </div>

@@ -1,6 +1,6 @@
 <x-app-layout>
-    <div class="bg-white py-6 sm:py-8 lg:py-12 ">
-        <div class="max-w-screen-2xl px-4 md:px-8 mx-auto">
+    <div class="bg-white py-6 sm:py-8 lg:py-12">
+        <div class="max-w-screen-xl px-4 md:px-8 mx-auto">
             <div class="md:h-96 flex flex-col sm:flex-row rounded-lg overflow-hidden">
             <!-- content - start -->
             <div class="w-full sm:w-1/2 lg:w-2/5 flex flex-col p-4 sm:p-8">

@@ -32,11 +32,15 @@
             </div>
 
             <!-- Remember Me -->
-            <div class="block mt-4">
+            <div class=" mt-4 flex justify-between">
                 <label for="remember_me" class="inline-flex items-center">
                     <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
                     <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                 </label>
+
+                <p class="text-sm text-gray-600">初めめての方は
+                    <a href="{{ route('register') }}" class="underline">こちら</a>
+                </p>
             </div>
 
             <div class="flex items-center justify-end mt-4">
