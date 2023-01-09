@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Http\File;
 
 use Validator;
 use App\Models\Review;
 use App\Models\Tag;
 use Auth;
 use \InterventionImage;
+use Illuminate\Support\Facades\Storage;
 class ReviewController extends Controller
 {
     /**
@@ -66,36 +69,53 @@ class ReviewController extends Controller
         ->withErrors($validator);
     }
 
-    // //画像の保存
-    // $filename = $request->imgpath->getClientOriginalName();
-    // //送信したファイル名が存在しないならばTrueを返す、存在するならfalseを返す
-    // $doesnt_exists = Review::where('imgpath', $filename)->doesntExist();
-    // $counts = Review::where('imgpath', $filename)->count();
-    // ddd($counts);
-    // // ddd($doesnt_exists);
-    // //その名前のファイルがDBになかったら(Trueならば)、storeAs関数でstore/app/publicに画像を保存し、そのパスを$imgに入れる。
-    // if($doesnt_exists){
-      //   $img = $request->imgpath->storeAs('',$filename,'public');
-      // }
-      // else {
+    if ($request['imgpath']) {
         
-        // }
+            //現在時刻を取得
+            $now = date_format(Carbon::now(), 'YmdHis');
+            $file = $request->file('imgpath');
+            //オリジナルネームを取得
+            $name = $file->getClientOriginalName();
+            
+            //ファイル名を現在時刻＋オリジナルネームに変更
+            $tmpFile = $now . '_' . $name;
+            $tmpPath = $tmpFile;
+            
+            //アスペクト比を維持して、画像サイズを横幅1080px、縦幅720pxにして一時保存する。
+            $image = InterventionImage::make($file)
+            ->fit(1080, 720, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(storage_path('app/public/' .$tmpPath ) );
 
-    $file = $request->file('imgpath');
-    
-    // $height = getimagesize($file);
-    // ddd($height);
-    $name = $file->getClientOriginalName();
+            // s3に画像ファイルとして保存
+            $s3 = Storage::disk('s3')->putFileAs('dir',new File(storage_path('app/public/' .$tmpPath )),$tmpPath);
+            $result = Storage::disk('s3')->url($s3);
+            // ddd($result);
 
-    //アスペクト比を維持して、画像サイズを横幅1080px、縦幅720pxにして保存する。
-    $img = InterventionImage::make($file)->fit(1080, 720, function ($constraint) {
-        $constraint->aspectRatio();
-    })->save(storage_path('app/public/' .$name ) );
+            // 一時ファイルを削除
+            $delete = Storage::disk('public')->delete($tmpPath);
+        }
 
+    // $file = $request->file('imgpath');
+
+
+    // $name = $file->getClientOriginalName();
+
+    // //アスペクト比を維持して、画像サイズを横幅1080px、縦幅720pxにして保存する。
+    // $img = InterventionImage::make($file)->fit(1080, 720, function ($constraint) {
+    //     $constraint->aspectRatio();
+    // }); //->save(storage_path('app/public/' .$name ) );
+
+    // Storage::disk('s3')->putFile('/', $file);
+
+    // $s3_file_name = Storage::disk('s3')->put('/', $img, 'public');
+    // ddd($s3_file_name);
+    // Storage::put(config('filesystems.s3.url').$name, (string) $img->encode());
     //諸々書き込み
+
     $result = Review::create([
         'user_id' => Auth::user()->id,
-        'imgpath' => $name,
+        'imgpath' => $result,
         'title' => $request->title,
         'description' => $request->description,
         'score' => $request->score
@@ -164,7 +184,7 @@ class ReviewController extends Controller
                 $tagResult = $tagResult . '、' . $tag->name;
             }
         }
-
+        
         //頭文字の、を切り取る
         if(mb_substr($tagResult, 0,1) == '、'){
             $tagResult = mb_substr($tagResult,1);
