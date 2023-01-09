@@ -8,7 +8,7 @@
           <div class="mb-6">
 
             <div class="flex flex-col mb-4">
-              <img class = "transition duration-300 drop-shadow-md"src=" {{ asset('storage/'.$review->imgpath)}}">
+              <img class = "transition duration-300 drop-shadow-md"src="{{$review->imgpath}}">
             </div>
           <div class="px-6">
             <div class="flex flex-col mb-2">

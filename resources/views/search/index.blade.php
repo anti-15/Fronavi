@@ -53,7 +53,7 @@
                   
                     <div class=" transition duration-300  hover:scale-90 hover:rounded-lg flex justify-center">
                       <a href="{{ route('review.show', $review->id)}}">
-                        <img class = "transition duration-300 hover:rounded-lg hover:opacity-80"src=" {{ asset('storage/'.$review->imgpath)}}">
+                        <img class = "transition duration-300 hover:rounded-lg hover:opacity-80"src="{{$review->imgpath}}">
                       </a>
                     </div>
                   </td>
