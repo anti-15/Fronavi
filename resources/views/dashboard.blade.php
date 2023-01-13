@@ -20,7 +20,7 @@
 
             <!-- image - start -->
             <div class="w-full sm:w-1/2 lg:w-3/5 h-60 sm:h-auto  order-first sm:order-none ">
-                <img src="https://fronavi.s3.ap-northeast-1.amazonaws.com/6075643547dc094fbc9408ad_59.png" loading="lazy" alt="お風呂に入る女の子" class="w-full h-full object-cover object-center" />
+                <img src="https://fronavi.s3.ap-northeast-1.amazonaws.com/girl_taking_a_bath.png" loading="lazy" alt="お風呂に入る女の子" class="w-full h-full object-cover object-center" />
             </div>
             <!-- image - end -->
             </div>
