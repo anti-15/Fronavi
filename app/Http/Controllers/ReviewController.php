@@ -87,13 +87,23 @@ class ReviewController extends Controller
             })->save(storage_path('app/public/' .$tmpPath ) );
 
             // s3に画像ファイルとして保存
-            $s3 = Storage::disk('s3')->putFileAs('dir',new File(storage_path('app/public/' .$tmpPath )),$tmpPath);
-            $result = Storage::disk('s3')->url($s3);
-            // ddd($result);
-
+            if(config('app.env') === 'production'){
+                //本番環境
+                $s3 = Storage::disk('s3')->putFileAs('dir/production',new File(storage_path('app/public/' .$tmpPath )),$tmpPath);
+                $result = Storage::disk('s3')->url($s3);
+            }
+            else {
+                //開発環境
+                $s3 = Storage::disk('s3')->putFileAs('dir/local',new File(storage_path('app/public/' .$tmpPath )),$tmpPath);
+                $result = Storage::disk('s3')->url($s3);
+            }
             // 一時ファイルを削除
             $delete = Storage::disk('public')->delete($tmpPath);
-        }
+    }
+    //画像が添付されなかった場合
+    else {
+        $result = 'https://fronavi.s3.ap-northeast-1.amazonaws.com/20200502_noimage.png';
+    }
 
     $result = Review::create([
         'user_id' => Auth::user()->id,
