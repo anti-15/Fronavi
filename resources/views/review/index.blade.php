@@ -58,7 +58,7 @@
                           </button>
                         </form>
 
-                        <form action="{{ route('review.destroy',$review->id) }}" method="POST" class="text-left">
+                        <form action="{{ route('review.destroy',$review->id) }}" onClick= "return confirm('本当に削除しますか？')" method="POST" class="text-left">
                           @method('delete')
                           @csrf
                           <button type="submit" class=" text-sm hover:bg-gray-200 hover:shadow-none text-white py-1 px-2 focus:outline-none focus:shadow-outline">

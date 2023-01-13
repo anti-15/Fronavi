@@ -57,7 +57,6 @@ class ReviewController extends Controller
     // バリデーション
     $validator = Validator::make($request->all(), [
         'title' => 'required | max:25',
-        'description' => 'required',
         'score' => 'required',
         'tag' => 'nullable'
     ]);
@@ -69,7 +68,7 @@ class ReviewController extends Controller
         ->withErrors($validator);
     }
 
-    if ($request['imgpath']) {
+    if ($request->imgpath) {
         
             //現在時刻を取得
             $now = date_format(Carbon::now(), 'YmdHis');
@@ -95,23 +94,6 @@ class ReviewController extends Controller
             // 一時ファイルを削除
             $delete = Storage::disk('public')->delete($tmpPath);
         }
-
-    // $file = $request->file('imgpath');
-
-
-    // $name = $file->getClientOriginalName();
-
-    // //アスペクト比を維持して、画像サイズを横幅1080px、縦幅720pxにして保存する。
-    // $img = InterventionImage::make($file)->fit(1080, 720, function ($constraint) {
-    //     $constraint->aspectRatio();
-    // }); //->save(storage_path('app/public/' .$name ) );
-
-    // Storage::disk('s3')->putFile('/', $file);
-
-    // $s3_file_name = Storage::disk('s3')->put('/', $img, 'public');
-    // ddd($s3_file_name);
-    // Storage::put(config('filesystems.s3.url').$name, (string) $img->encode());
-    //諸々書き込み
 
     $result = Review::create([
         'user_id' => Auth::user()->id,
