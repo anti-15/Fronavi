@@ -5,7 +5,7 @@
     <div class="max-w-xl mx-auto sm:w-10/12 md:w-8/10 ">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-4 bg-white border-b border-gray-200">
-          <h1 class="text-center text-3xl">ふろなび</h1>
+          <h1 class="text-center text-3xl">フロメグ！</h1>
           <table class="text-center w-full border-collapse">
             <thead>
 
