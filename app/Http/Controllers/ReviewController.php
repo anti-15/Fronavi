@@ -200,7 +200,6 @@ class ReviewController extends Controller
         //バリデーション
     $validator = Validator::make($request->all(), [
         'title' => 'required | max:25',
-        'description' => 'required',
         'score' => 'required',
         'tag' => 'nullable'
     ]);

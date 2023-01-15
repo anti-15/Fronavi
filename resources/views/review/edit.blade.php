@@ -89,11 +89,26 @@
       @endif
       
       @foreach($review->tags as $tag)
+      @if($tag->name == '')
+      <div class="">
+        <label for="tag" class="inline-block text-gray-800 text-sm sm:text-base mb-2">エリア</label>
+        <select class="w-full  rounded-md py-2 px-3 text-gray-800 outline-none" type="text" name="tag" id="">
+          <option class="text-gray-400" value="" selected>選択して下さい</option>
+          <option value="北海道" >北海道</option>
+          <option value="東北">東北</option>
+          <option value="関東">関東</option>
+          <option value="関西">関西</option>
+          <option value="中国・四国">中国・四国</option>
+          <option value="九州・沖縄">九州・沖縄</option>
+        </select>
+      </div>
+      @endif
+
       @if($tag->name == '北海道')
       <div class="">
         <label for="tag" class="inline-block text-gray-800 text-sm sm:text-base mb-2">エリア</label>
         <select class="w-full  rounded-md py-2 px-3 text-gray-800 outline-none" type="text" name="tag" id="">
-          <option class="text-gray-400" value="{{$review->score}}">選択して下さい</option>
+          <option class="text-gray-400" value="">選択して下さい</option>
           <option value="北海道" selected>北海道</option>
           <option value="東北">東北</option>
           <option value="関東">関東</option>
@@ -108,7 +123,7 @@
       <div class="">
         <label for="tag" class="inline-block text-gray-800 text-sm sm:text-base mb-2">エリア</label>
         <select class="w-full  rounded-md py-2 px-3 text-gray-800 outline-none" type="text" name="tag" id="">
-          <option class="text-gray-400" value="{{$review->score}}">選択して下さい</option>
+          <option class="text-gray-400" value="">選択して下さい</option>
           <option value="北海道">北海道</option>
           <option value="東北" selected>東北</option>
           <option value="関東">関東</option>
@@ -123,7 +138,7 @@
       <div class="">
         <label for="tag" class="inline-block text-gray-800 text-sm sm:text-base mb-2">エリア</label>
         <select class="w-full  rounded-md py-2 px-3 text-gray-800 outline-none" type="text" name="tag" id="">
-          <option class="text-gray-400" value="{{$review->score}}">選択して下さい</option>
+          <option class="text-gray-400" value="">選択して下さい</option>
           <option value="北海道">北海道</option>
           <option value="東北">東北</option>
           <option value="関東" selected>関東</option>
@@ -138,7 +153,7 @@
       <div class="">
         <label for="tag" class="inline-block text-gray-800 text-sm sm:text-base mb-2">エリア</label>
         <select class="w-full  rounded-md py-2 px-3 text-gray-800 outline-none" type="text" name="tag" id="">
-          <option class="text-gray-400" value="{{$review->score}}">選択して下さい</option>
+          <option class="text-gray-400" value="">選択して下さい</option>
           <option value="北海道">北海道</option>
           <option value="東北">東北</option>
           <option value="関東">関東</option>
@@ -153,7 +168,7 @@
       <div class="">
         <label for="tag" class="inline-block text-gray-800 text-sm sm:text-base mb-2">エリア</label>
         <select class="w-full  rounded-md py-2 px-3 text-gray-800 outline-none" type="text" name="tag" id="">
-          <option class="text-gray-400" value="{{$review->score}}">選択して下さい</option>
+          <option class="text-gray-400" value="">選択して下さい</option>
           <option value="北海道">北海道</option>
           <option value="東北">東北</option>
           <option value="関東">関東</option>
@@ -168,7 +183,7 @@
       <div class="">
         <label for="tag" class="inline-block text-gray-800 text-sm sm:text-base mb-2">エリア</label>
         <select class="w-full  rounded-md py-2 px-3 text-gray-800 outline-none" type="text" name="tag" id="">
-          <option class="text-gray-400" value="{{$review->score}}">選択して下さい</option>
+          <option class="text-gray-400" value="">選択して下さい</option>
           <option value="北海道">北海道</option>
           <option value="東北">東北</option>
           <option value="関東">関東</option>
