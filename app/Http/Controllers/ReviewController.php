@@ -82,10 +82,11 @@ class ReviewController extends Controller
             
             //アスペクト比を維持して、画像サイズを横幅1080px、縦幅720pxにして一時保存する。
             $image = InterventionImage::make($file)
+            ->orientate()
             ->fit(1080, 720, function ($constraint) {
                 $constraint->aspectRatio();
             });
-            $image->orientate()->save(storage_path('app/public/' .$tmpPath ) );
+            $image->save(storage_path('app/public/' .$tmpPath ) );
 
             // s3に画像ファイルとして保存
             if(config('app.env') === 'production'){
