@@ -141,8 +141,8 @@
                   </td>
                 </tr>
 
-                <tr>
-                  <td class="flex space-x-2 border-b">
+                <tr class="">
+                  <td class="flex space-x-2 border-b overflow-x-scroll">
                     @foreach($review->tags as $tag)
                       <a href="{{ route('tag.show', $tag->id)}}">
                         <div class="flex space-x-2  pb-2">

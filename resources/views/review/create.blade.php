@@ -32,7 +32,7 @@
       <div class="">
         <label for="tag" class="inline-block text-gray-800 text-sm sm:text-base mb-2">エリア</label>
         <select class="w-full  rounded-md py-2 px-3 text-gray-800 outline-none" type="text" name="tag" id="">
-          <option class="text-gray-400" value="">選択して下さい</option>
+          <option class="text-gray-400" value=" ">選択して下さい</option>
           <option value="北海道">北海道</option>
           <option value="東北">東北</option>
           <option value="関東">関東</option>
