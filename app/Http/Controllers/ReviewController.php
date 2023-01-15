@@ -84,7 +84,8 @@ class ReviewController extends Controller
             $image = InterventionImage::make($file)
             ->fit(1080, 720, function ($constraint) {
                 $constraint->aspectRatio();
-            })->orientate()->save(storage_path('app/public/' .$tmpPath ) );
+            });
+            $image->orientate()->save(storage_path('app/public/' .$tmpPath ) );
 
             // s3に画像ファイルとして保存
             if(config('app.env') === 'production'){
