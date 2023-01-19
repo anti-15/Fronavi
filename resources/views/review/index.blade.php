@@ -53,7 +53,7 @@
       @foreach ($reviews as $review)
       <div>
         
-        <div class="flex justify-between">
+        <div class="w-full flex justify-between">
           <p class="font-bold px-2 py-2 text-left text-grey-dark">{{$review->user->name}}</p>
             <div class ="flex">
               @if($review -> user_id === Auth::user()->id)
@@ -156,7 +156,7 @@
           <div class="px-4 pb-2 flex overflow-auto">
             @foreach($review->tags as $tag)
             <a href="{{ route('tag.show', $tag->id)}}">
-              <p class="whitespace-nowrap shadow-lg bg-gray-200 rounded-full px-3 py-1 text-sm font-Noto font-semibold text-gray-700 mr-2 mb-2">{{$tag->name}}</p>
+              <p class=" shadow-lg bg-gray-200 rounded-full px-3 py-1 text-sm font-Noto font-semibold text-gray-700 mr-2 mb-2">{{$tag->name}}</p>
             </a>
             @endforeach
           </div>
