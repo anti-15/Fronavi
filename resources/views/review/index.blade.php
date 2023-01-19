@@ -11,7 +11,8 @@
             <div class="space-y-3 sm:space-y-0 text-right sm:flex justify-end sm:space-x-1">
               <form class="" action="{{ route('review.index') }}" method="GET">
                 @csrf
-                <button type="submit" class=" py-1 px-3 text-xs font-medium tracking-widest text-gray-700  bg-gray-200 shadow-lg rounded-full focus:outline-none duration-500 transition-all hover:bg-gray-500 hover:text-white hover:shadow-none">
+
+                <button type="submit" class=" py-1 px-3 text-xs font-medium tracking-widest text-green-500  bg-red-300 shadow-lg rounded-full focus:outline-none duration-200 transition-all hover:bg-red-500 hover:shadow-none">
                   新しい順
                 </button>
               </form>
