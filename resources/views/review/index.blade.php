@@ -37,7 +37,7 @@
                 </form>
               </tr>
               
-            </thead>
+            
             
           </div>
         </div>
@@ -51,7 +51,7 @@
     <div class="w-full grid justify-center sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-4 p-4">
       <!--Card 1-->
       @foreach ($reviews as $review)
-      <div>
+      <div class="w-full">
         
         <div class="w-full flex justify-between">
           <p class="font-bold px-2 py-2 text-left text-grey-dark">{{$review->user->name}}</p>
@@ -79,9 +79,9 @@
             </div>
         </div>
 
-        <div class="rounded  shadow-lg">
+        <div class="w-full rounded  shadow-lg">
 
-          <div class=" transition duration-300  hover:scale-90 hover:rounded-lg flex justify-center">
+          <div class="w-full transition duration-300  hover:scale-90 hover:rounded-lg flex justify-center">
             <a href="{{ route('review.show', $review->id)}}">
               <img class = "transition duration-300 hover:rounded-lg hover:opacity-80"src="{{$review->imgpath}}">
             </a>
