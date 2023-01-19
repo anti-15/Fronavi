@@ -12,14 +12,14 @@
             <div class="text-right sm:flex justify-end sm:space-x-1">
               <form class="" action="{{ route('review.index') }}" method="GET">
                 @csrf
-                <button type="submit" class=" py-1 px-3 text-xs font-medium tracking-widest text-green-500  bg-red-300 shadow-lg rounded-full focus:outline-none duration-200 transition-all hover:bg-red-500 hover:shadow-none">
+                <button type="submit" class=" py-1 px-3 text-xs font-medium tracking-widest text-white  bg-red-300 shadow-lg rounded-full focus:outline-none duration-200 transition-all hover:bg-red-500 hover:shadow-none">
                   新しい順
                 </button>
               </form>
 
               <form class="mb-6" action="{{ route('review.score') }}" method="GET">
                 @csrf
-                <button type="submit" class=" py-1 px-3  text-xs font-medium tracking-widest  text-blue-800 bg-red-300 shadow-lg rounded-full focus:outline-none duration-200 transition-all hover:bg-red-500 hover:shadow-none">
+                <button type="submit" class=" py-1 px-3  text-xs font-medium tracking-widest  text-white bg-red-300 shadow-lg rounded-full focus:outline-none duration-200 transition-all hover:bg-red-500 hover:shadow-none">
                   おすすめ順
                 </button>
               </form>
@@ -142,11 +142,11 @@
                 </tr>
 
                 <tr class="">
-                  <td class="flex space-x-2 border-b overflow-x-scroll">
+                  <td class="  flex space-x-2 border-b ">
                     @foreach($review->tags as $tag)
                       <a href="{{ route('tag.show', $tag->id)}}">
                         <div class="flex space-x-2  pb-2">
-                          <h3 class=" py-1 px-2  text-xs font-medium tracking-widest text-white  bg-red-300 shadow-lg rounded-full focus:outline-none duration-200 transition-all hover:bg-red-500 hover:shadow-none">{{$tag->name}}</h3>
+                          <h3 class="py-1 px-2  text-xs font-medium tracking-widest text-white  bg-red-300 shadow-lg rounded-full focus:outline-none duration-200 transition-all hover:bg-red-500 hover:shadow-none">{{$tag->name}}</h3>
                         </div>
                       </a>
                       @endforeach
