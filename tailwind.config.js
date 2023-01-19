@@ -13,7 +13,8 @@ module.exports = {
             fontFamily: {
                 sans: ["Nunito", ...defaultTheme.fontFamily.sans],
                 fancy: ["Dancing Script"],
-                ShipporiMincho:["Shippori Mincho"],
+                ShipporiMincho: ["Shippori Mincho"],
+                Noto: ["Noto Sans JP"],
             },
         },
     },
