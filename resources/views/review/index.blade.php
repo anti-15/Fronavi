@@ -153,10 +153,10 @@
           </div>
 
         
-          <div class="px-4 pb-2 flex">
+          <div class="px-4 pb-2 flex overflow-auto">
             @foreach($review->tags as $tag)
             <a href="{{ route('tag.show', $tag->id)}}">
-              <span class="inline-block shadow-lg bg-gray-200 rounded-full px-3 py-1 text-sm font-Noto font-semibold text-gray-700 mr-2 mb-2">{{$tag->name}}</span>
+              <p class="whitespace-nowrap shadow-lg bg-gray-200 rounded-full px-3 py-1 text-sm font-Noto font-semibold text-gray-700 mr-2 mb-2">{{$tag->name}}</p>
             </a>
             @endforeach
           </div>
