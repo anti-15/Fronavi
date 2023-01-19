@@ -19,7 +19,9 @@
 
               <form class="mb-6" action="{{ route('review.score') }}" method="GET">
                 @csrf
-                <button type="submit" class=" py-1 px-3  text-xs font-medium tracking-widest text-gray-700  bg-gray-200 shadow-lg rounded-full focus:outline-none duration-500 transition-all hover:bg-gray-500 hover:text-white hover:shadow-none">
+
+                <button type="submit" class=" py-1 px-3  text-xs font-medium tracking-widest  text-blue-800 bg-red-300 shadow-lg rounded-full focus:outline-none duration-200 transition-all hover:bg-red-500 hover:shadow-none">
+
                   おすすめ順
                 </button>
               </form>
