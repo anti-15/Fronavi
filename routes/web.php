@@ -18,6 +18,9 @@ use App\Http\Controllers\SearchController;
 |
 */
 Route::group(['middleware' => 'auth'], function () {
+    //マイページ
+    Route::get('/review/mypage', [ReviewController::class, 'mydata'])->name('review.mypage');
+
     //レビュー機能
     Route::get('/review/score', [ReviewController::class, 'indexScore'])->name('review.score');
     Route::resource('review', ReviewController::class);

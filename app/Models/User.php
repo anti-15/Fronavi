@@ -46,4 +46,8 @@ class User extends Authenticatable
     public function reviews() {
         return $this->belongsToMany(Review::class)->withTimestamps();
     }  
+
+    public function userReviews() {
+        return $this->hasMany(Review::class);
+    }
 }
