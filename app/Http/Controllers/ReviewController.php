@@ -9,6 +9,7 @@ use Illuminate\Http\File;
 use Validator;
 use App\Models\Review;
 use App\Models\Tag;
+use App\Models\User;
 use Auth;
 use \InterventionImage;
 use Illuminate\Support\Facades\Storage;
@@ -41,7 +42,10 @@ class ReviewController extends Controller
      */
     public function create()
     {   
-        
+        // $review = User::query()
+        // ->find(Auth::user()->id)
+        // ->reviews;
+        // ddd($review);
         return view('review.create');
     }
 
@@ -252,5 +256,16 @@ class ReviewController extends Controller
     {
         $result = Review::find($id)->delete();
         return redirect()->route('review.index');
+    }
+
+    public function mydata()
+    {
+        // Userモデルに定義したリレーションを使用してデータを取得する．
+        $reviews = User::query()
+        ->find(Auth::user()->id)
+        ->userReviews()
+        ->orderBy('created_at','desc')
+        ->get();
+        return view('review.index', compact('reviews'));
     }
 }
