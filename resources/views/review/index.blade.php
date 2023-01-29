@@ -1,9 +1,9 @@
 <x-app-layout>
 
-  <div class="py-12">
+  <div class="py-10">
     <div class="max-w-7xl mx-auto sm:max-w-3xl md:max-w-5xl ">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-5 bg-white border-b border-gray-200">
+        <div class=" bg-white  border-gray-200">
           <h1 class="text-center text-3xl">フロメグ！</h1>
           <table class="text-center w-full border-collapse">
             <thead>
