@@ -3,7 +3,7 @@
   <div class="py-10">
     <div class="max-w-7xl mx-auto sm:max-w-3xl md:max-w-5xl ">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <div class=" bg-white border-gray-200">
+        <div class="px-5 bg-white border-gray-200">
           @foreach($TagReviews as $tag)
           @foreach($tag -> tags as $ts)
             <div class="flex  justify-center">
