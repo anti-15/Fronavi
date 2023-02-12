@@ -14,7 +14,7 @@
 人のおすすめの温泉を知ることもできるし、自分の温泉日記としても使うことができる。
 
 ### 公開したアプリの URL（Store にリリースしている場合）
-www.fromegu.com
+http://www.fromegu.com
 
 ### 該当プロジェクトのリポジトリ URL（GitHub,GitLab など Git ホスティングサービスを利用されている場合）
 https://github.com/anti-15/Fronavi
