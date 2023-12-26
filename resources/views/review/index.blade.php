@@ -132,7 +132,7 @@
                   <div class="px-4 py-4">
                     <div class="font-bold font-Noto text-xl mb-2">{{$review->title}}</div>
                     <p class="text-gray-700 text-base font-Noto h-16 overflow-y-scroll">
-                      {{$review->description}}
+                      {!! nl2br(e($review->description)) !!}
                     </p>
                   </div>
 
